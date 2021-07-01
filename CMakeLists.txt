@@ -12,8 +12,9 @@ set (CMAKE_CXX_STANDARD 14)
 # configura o diretório contendo os .h, assim você pode incluílos apenas com include "arquivo.h"
 include_directories( include )
 
-# Cria um executável com nome "run_tests", adiciona neste executável os arquivos do test manager e o seu main.cpp
+# Cria um executável com nome "KenoGame", adiciona neste executável os arquivos do src e do include
 add_executable( KenoGame
+                src/Arquivo.cpp
                 src/main.cpp )
 
 # The end

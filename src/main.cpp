@@ -1,8 +1,8 @@
 #include <iostream>   // cout, endl
 
-using namespace std;
+#include "Arquivo.hpp"
 
-#define which_lib keno_project
+using namespace std;
 
 int main(int argc, char *argv[]){
   //imprime todos os argumentos recebidos na execução
