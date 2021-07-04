@@ -38,8 +38,9 @@ set_of_numbers_type KenoGame::get_round_hits() {
     return g_hits[g_round];
 }
 
-void KenoGame::put_wage() {
+void KenoGame::put_wage(int rounds) {
     auto rw = kb.KenoBet::get_wage();
+    rw = rw / rounds;
     g_wages.push_back(rw);
 }
 

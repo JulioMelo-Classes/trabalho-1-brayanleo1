@@ -52,8 +52,10 @@ class KenoGame {
         */
         set_of_numbers_type get_round_hits();
 
-        //! Coloca o valor da aposta do round atual 
-        void put_wage();
+        /*! Coloca o valor da aposta do round atual
+            @param rounds Quantidade de rounds
+        */
+        void put_wage(int rounds);
 
         /*! Retorna o vetor de valores de apostas 
             @return Vetor de valores das apostas
