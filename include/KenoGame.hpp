@@ -16,9 +16,9 @@ class KenoGame {
         set_of_sets g_hits; //Números sorteados em todos os rounds
         set_of_wages g_wages; //Apostas de todos os rounds
         indR g_round; //Iterator indice do round da vez
-        indW g_wage;
+        indW g_wage; //Iterator indice da wage do round da vez
     public:
-        //Cria um KenoGame vazio usando uma objeto da classe KenoBet
+        //Cria um KenoGame vazio usando um objeto da classe KenoBet
         KenoGame(KenoBet kb);
 
         //Coloca o iteretor indice do primeiro round
@@ -30,7 +30,7 @@ class KenoGame {
         //Coloca o iteretor indice da wage do primeiro round
         void put_round_wage(indW g_round_wage_);
 
-        //Retorna o iterator indice do round atual
+        //Retorna o iterator indice da wage do round atual
         indW get_round_wage();
 
         //Sorteia e preenche os números do round atual usando o iterator
