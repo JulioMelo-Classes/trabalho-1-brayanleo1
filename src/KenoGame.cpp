@@ -48,8 +48,21 @@ set_of_wages KenoGame::get_g_wage() {
     return g_wages;
 }
 
+cash_type KenoGame::get_total_wage() {
+    auto be = g_wages.begin();
+    auto en = g_wages.end();
+    cash_type tot = *be;
+        while(be != en) {
+            ++be;
+            if(be != en) {
+                tot = tot + *be;
+            }
+        }
+    return tot;
+}
+
 //! Deixado para depois, quando receber resposta
-void KenoGame::calc_wage() {
+int KenoGame::calc_wage() {
     ++g_round;
     ++g_wage;
 }

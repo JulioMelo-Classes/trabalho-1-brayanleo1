@@ -62,8 +62,15 @@ class KenoGame {
         */
         set_of_wages get_g_wage();
 
-        //! Calcula e adiciona ou remove da wage do round atual dependendo do número de matchs
-        void calc_wage();
+        /*! Retorna a soma dos valores de todas as apostas do vetor g_wages
+            @return Um valor do tipo cash_type contendo todas as wages atuais no vetor g_wages
+        */
+        cash_type get_total_wage();
+
+        /*! Calcula e adiciona ou remove da wage do round atual dependendo do número de matchs
+            @return Inteiro contendo o número de quantas vezes o jogador ganhará a wage naquele round
+        */
+        int calc_wage();
 };
 
 #endif //KenoGame_hpp
