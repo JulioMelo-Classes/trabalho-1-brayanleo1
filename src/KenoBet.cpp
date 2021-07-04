@@ -40,7 +40,6 @@ void KenoBet::reset( void ) {
 }
 
 cash_type KenoBet::get_wage( void ) {
-    m_wage = 0;
     return m_wage;
 }
 
