@@ -17,6 +17,11 @@ bool KenoBet::add_number(number_type spot_) {
         }
         ++it;
     }
+
+    if(x == true) {
+        m_spots.push_back(spot_);
+    }
+
     return x;
 }
 
@@ -24,6 +29,7 @@ bool KenoBet::set_wage( cash_type wage_ ) {
     bool az = false;
     if(wage_ > 0) {
         az = true;
+        m_wage = wage_;
     }
     return az;
 }
