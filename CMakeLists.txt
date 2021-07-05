@@ -15,6 +15,9 @@ include_directories( include )
 # Cria um executável com nome "KenoGame", adiciona neste executável os arquivos do src e do include
 add_executable( KenoGame
                 src/Arquivo.cpp
+                src/KenoBet.cpp
+                src/KenoGame.cpp
+                src/Interface.cpp
                 src/main.cpp )
 
 # The end
