@@ -4,11 +4,12 @@
 #include "KenoBet.hpp"
 
 #include "vector"
+#include <utility>
 
-using set_of_sets = std::vector< set_of_numbers_type >; //Conjunto dos conjuntos do tipo de dado do keno hit
-using set_of_wages = std::vector< cash_type >; //Conjunto de apostas do tipo definidas nesse aplicativo
-using indR = vector<number_type>::iterator;//Iterator para round da vez
-using indW = vector<cash_type>::iterator;//Iterator para wage do round da vez
+using set_of_sets = std::vector< set_of_numbers_type >; //<! Conjunto dos conjuntos do tipo de dado do keno hit
+using set_of_wages = std::vector< cash_type >; //<! Conjunto de apostas do tipo definidas nesse aplicativo
+using indR = std::vector<set_of_numbers_type>::iterator;//<! Iterator para round da vez
+using indW = std::vector<cash_type>::iterator;//<! Iterator para wage do round da vez
 
 
 class KenoGame {
@@ -20,9 +21,15 @@ class KenoGame {
         KenoBet kb; //<! Objeto da classe KenoBet
     public:
         /*! Cria um KenoGame vazio usando um objeto da classe KenoBet
-            @param kb Um objeto do tipo KenoBet
+            @param kb_ Um objeto do tipo KenoBet
         */
-        KenoGame(KenoBet kb);
+        KenoGame(KenoBet kb_);
+
+        //! Cria um KenoGame vazio
+        KenoGame();
+
+        //! Retorna o objeto KenoBet associado ao objeto Kenogame
+        KenoBet get_bet();
 
         /*! Coloca o iteretor indice para o começo de g_hits
             @param g_round_ O indice do começo de g_hits
@@ -45,7 +52,7 @@ class KenoGame {
         indW get_round_wage();
 
         //! Sorteia e preenche os números do round atual
-        void make_hits();
+        void make_hits(int round);
 
         /*! Retorna o vetor com os números sorteados do round atual
             @return Vetor com os números sorteados do round atual
@@ -68,9 +75,9 @@ class KenoGame {
         cash_type get_total_wage();
 
         /*! Calcula e adiciona ou remove da wage do round atual dependendo do número de matchs
-            @return Inteiro contendo o número de quantas vezes o jogador ganhará a wage naquele round
+            @return Um pair contendo o número de quantas vezes o jogador ganhará a wage naquele round e o valor ganho no final
         */
-        int calc_wage();
+        std::pair<int,cash_type> calc_wage(set_of_sets tabela);
 };
 
 #endif //KenoGame_hpp
