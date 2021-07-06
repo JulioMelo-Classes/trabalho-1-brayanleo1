@@ -13,11 +13,11 @@ void Interface::readArchive() {
 }
 
 void Interface::welcome(int rounds) {
-    std::cout << "Você apostará um total de " <<kg.get_bet().get_wage() <<"créditos." << endl;
+    std::cout << "Você apostará um total de " << kg.get_bet().get_wage() <<" créditos." << endl;
     std::cout << "Jogará um total de " << rounds <<" rodadas, apostando " << *kg.get_round_wage() <<" créditos por rodada" << endl;
 }
 
-void Interface::printPlayerData(set_of_sets tabela) {
+void Interface::printPlayerData(std::vector<std::vector<float>> tabela) {
     std::cout << "Sua aposta tem "<< kg.get_bet().size() <<" números, eles são: [ ";
     auto spts = kg.get_bet().get_spots();
     auto it = spts.begin();
@@ -40,7 +40,7 @@ void Interface::printPlayerData(set_of_sets tabela) {
     std::cout << endl << "------------------------------------------------------------" << endl;
 }
 
-void Interface::printRound(int rounds, int round, set_of_sets tabela) {
+void Interface::printRound(int rounds, int round, std::vector<std::vector<float>> tabela) {
     std::cout << "Esta é a rodada #" << round << "de " << rounds <<", sua aposta é " << *kg.get_round_wage() << ". Boa sorte!" << endl;
     std::cout << "Os números sorteados são: [ ";
     auto ghits = kg.get_round_hits();

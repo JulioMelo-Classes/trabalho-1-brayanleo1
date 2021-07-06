@@ -31,6 +31,12 @@ class KenoGame {
         //! Retorna o objeto KenoBet associado ao objeto Kenogame
         KenoBet get_bet();
 
+        //! Cria o g_hits
+        void set_g_hits(set_of_sets g_hits_);
+
+        //! Cria o g_wages
+        void set_g_wages(set_of_wages g_wages_);
+
         /*! Coloca o iteretor indice para o começo de g_hits
             @param g_round_ O indice do começo de g_hits
         */
@@ -77,7 +83,7 @@ class KenoGame {
         /*! Calcula e adiciona ou remove da wage do round atual dependendo do número de matchs
             @return Um pair contendo o número de quantas vezes o jogador ganhará a wage naquele round e o valor ganho no final
         */
-        std::pair<int,cash_type> calc_wage(set_of_sets tabela);
+        std::pair<float,cash_type> calc_wage(std::vector<std::vector<float>> tabela);
 };
 
 #endif //KenoGame_hpp

@@ -15,10 +15,10 @@ class Interface {
         void welcome(int rounds);
 
         //! Imprime a aposta atual e a tabela com quantidade de hits e retorno por rodada
-        void printPlayerData(set_of_sets tabela);
+        void printPlayerData(std::vector<std::vector<float>> tabela);
 
         //! Imprime o estado inicial e final da rodada atual assim como faz o cálculo da wage da rodada
-        void printRound(int rounds, int round, set_of_sets tabela);
+        void printRound(int rounds, int round, std::vector<std::vector<float>> tabela);
 
         //! Imprime um resumo de todas as partidas
         void printSumary();

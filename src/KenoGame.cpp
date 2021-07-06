@@ -14,6 +14,14 @@ KenoBet KenoGame::get_bet() {
     return kb;
 }
 
+void KenoGame::set_g_hits(set_of_sets g_hits_) {
+    g_hits = g_hits_;
+}
+
+void KenoGame::set_g_wages(set_of_wages g_wages_) {
+    g_wages = g_wages_;
+}
+
 void KenoGame::put_round(indR g_round_){
     g_round = g_round_;
 }
@@ -47,7 +55,7 @@ set_of_numbers_type KenoGame::get_round_hits() {
 }
 
 void KenoGame::put_wage(int rounds) {
-    auto rw = kb.KenoBet::get_wage();
+    auto rw = kb.get_wage();
     rw = rw / rounds;
     g_wages.push_back(rw);
 }
@@ -69,14 +77,14 @@ cash_type KenoGame::get_total_wage() {
     return tot;
 }
 
-pair<int,cash_type> KenoGame::calc_wage(set_of_sets tabela) {
+pair<float,cash_type> KenoGame::calc_wage(std::vector<std::vector<float>> tabela) {
     cash_type valor = *g_wage;
     auto matchs = kb.get_hits(get_round_hits());
     auto msize = matchs.size();
-    int retorno = tabela[kb.size() - 1][msize];
+    float retorno = tabela[kb.size() - 1][msize];
     valor = valor * retorno;
     *g_wage = valor;
-    std::pair<int,cash_type> pp;
+    std::pair<float,cash_type> pp;
     pp.first = retorno;
     pp.second = valor;
     ++g_round;
