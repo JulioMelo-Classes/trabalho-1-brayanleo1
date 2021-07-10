@@ -69,7 +69,7 @@ set_of_numbers_type KenoBet::get_hits( const set_of_numbers_type & hits_ ) {
     while(it_m != end_m) {
         int c = 0; //para parar o próximo while quando encontrar match
         while(it_h != end_h && c == 0) {
-            if(*it_h == *end_h) {
+            if(*it_h == *it_m) {
                 c = 1;
                 v.push_back(*it_h);
             }

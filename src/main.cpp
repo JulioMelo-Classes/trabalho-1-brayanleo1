@@ -44,15 +44,17 @@ int main(int argc, char *argv[]){
   tabela.push_back(s15);
 
   KenoBet kb;
-  KenoGame kg(kb);
-  Interface itfc(kg);
+  KenoGame kg(&kb);
+  Interface itfc(&kg);
 
   std::string campoUm;
   std::string campoDois;
   std::string campoTres;
 
-  Arquivo aq(argv[1]);
+  itfc.readArchive(*argv);
 
+  Arquivo aq(argv[1]);
+  
   auto r = aq.lerLinhas();
   auto i = r.begin();
   campoUm = *i;
@@ -71,7 +73,7 @@ int main(int argc, char *argv[]){
 
   bool az = kb.set_wage(wage);
   if(az == false) {
-    cout << "Aposta inválida" << endl;
+    cout << "Arquivo inexistente ou aposta inválida, encerrando o jogo" << endl;
     exit(0);
   }
 
@@ -84,39 +86,42 @@ int main(int argc, char *argv[]){
   while(ss3 >> spot) { //Enquanto houver números
     bool rep = kb.add_number(spot);
     if(rep == false) {
-      cout << "Número repetido" << endl;
+      cout << "Número repetido detectado, encerrando o jogo" << endl;
       exit(0);
     }
   }
 
   if(kb.size() > 15) {
-    cout << "Quantidade de números maior que o esperado" << endl;
+    cout << "Quantidade de números maior que o esperado, encerrando o jogo" << endl;
     exit(0);
   }
 
+  cout << ">>> Aposta lida com sucesso!" << endl;
+
   set_of_sets g_hits;
   kg.set_g_hits(g_hits);
-  auto g_round = g_hits.begin();
-  kg.put_round(g_round);
 
   set_of_wages g_wages;
   kg.set_g_wages(g_wages);
-  auto g_wage = g_wages.begin();
-  kg.put_round_wage(g_wage);
   kg.put_wage(rounds);
-
-  //Para teste apenas
-  cout << kb.get_wage() << endl;
-  cout << *(kg.get_round_wage()) << endl; //Por algum motivo, tá dando erro na impressão
-  //Acabou o teste
+  kg.put_round_wage();
 
   itfc.welcome(rounds);
 
   itfc.printPlayerData(tabela);
 
   int round = 1;
+  kg.make_hits(round);
+  auto par = kg.calc_wage(tabela);
   while(round <= rounds) {
-    itfc.printRound(rounds, round, tabela);
+    cout << *kg.get_round_wage() << endl;
+    itfc.printRound(rounds, round, par);
+    round++;
+    if(round <= rounds) {
+      kg.make_hits(round);
+      kg.adv_round_wage();
+      par = kg.calc_wage(tabela);
+    }
   }
   
   itfc.printSumary();
