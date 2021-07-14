@@ -8,6 +8,24 @@
 
 using namespace std;
 
+/*
+Avaliação
+Processamento do Arquivo de Entrada: 1
+Execução correta: 1
+Interfcace Textual: 1
+Documentação: 1
+Compilação automatizada: 1
+Organização em src, include, build, data: 1
+
+Observações:
+- Essa tabela no main vc poderia fazer inicialização inline igual como eu colouquei
+no canal de dicas.
+- A ordenação dos numeros sorteados não era essencial, mas ajuda bastante na complexidade (tempo de execução)
+de busca pelos matchs. Não sei o motivo de vc não ter feito, mas é algo a ter em mente.
+- A organização ficou muito boa, um plus pelo uso de ponteiros na classe KenoGame muito bom que vc conseguiu
+entender!
+*/
+
 int main(int argc, char *argv[]){
   
   //Criando a tabela de apostas
